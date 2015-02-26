@@ -1,4 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>I'm batman</h1>
+
+{% for data in masjid_list %}
+  {{ data }} <br/>
+{% endfor %}
+
 {% endblock %}
