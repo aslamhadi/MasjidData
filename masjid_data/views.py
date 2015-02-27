@@ -20,12 +20,30 @@ def get_rows(section_url):
     # cols = rows.findAll('td')
     return rows
 
+def get_columns(row):
+    column = row.findAll("td")
+    return column
+
+def get_actual_data(td):
+    data = td.find("font")
+    return data
 
 class IndexView(generic.ListView):
     template_name = "index.html"
     context_object_name = 'masjid_list'
 
     def get_queryset(self):
+      # get row first
       rows = get_rows("http://masjid.jp/list.html")
 
-      return rows
+      tds = []
+      for row in rows:
+          data = get_columns(row)
+          tds.append(data)
+
+      # fonts = []
+      # for td in tds:
+      #     data = get_actual_data(td)
+      #     fonts.append(data)
+
+      return tds
