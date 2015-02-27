@@ -39,11 +39,16 @@ class IndexView(generic.ListView):
       tds = []
       for row in rows:
           data = get_columns(row)
-          tds.append(data)
-
-      # fonts = []
-      # for td in tds:
-      #     data = get_actual_data(td)
-      #     fonts.append(data)
+          masjid = {}
+          masjid['name'] = data[0].text
+          masjid['area'] = data[1].text
+          masjid['address'] = data[2].text
+          try:
+              # font = data[3].findAll("font")
+              # masjid.remarks = data[3].text
+              masjid['remarks'] = data[3]
+          except IndexError:
+              pass
+          tds.append(masjid)
 
       return tds
