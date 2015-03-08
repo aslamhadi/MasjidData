@@ -6,6 +6,7 @@ class Masjid(models.Model):
     area = models.CharField(max_length=100, default="")
     address = models.TextField(default="")
     remarks = models.CharField(max_length=255, default="")
+    source = models.CharField(max_length=255, default="")
 
 
 class Hotel(models.Model):
@@ -19,6 +20,7 @@ class Hotel(models.Model):
     price = models.CharField(max_length=255, default="")
     other = models.CharField(max_length=255, default="")
     lang = models.CharField(max_length=255, default="")
+    source = models.CharField(max_length=255, default="")
     is_item_prayer = models.BooleanField(default=False)
     is_prayer_room = models.BooleanField(default=False)
 
@@ -42,6 +44,7 @@ class Restaurant(models.Model):
     price = models.CharField(max_length=255, default="")
     other = models.CharField(max_length=255, default="")
     lang = models.CharField(max_length=255, default="")
+    source = models.CharField(max_length=255, default="")
     is_item_prayer = models.BooleanField(default=False)
     is_prayer_room = models.BooleanField(default=False)
     is_free_wifi = models.BooleanField(default=False)
