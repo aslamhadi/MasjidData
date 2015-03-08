@@ -1,20 +1,14 @@
 from django.core.management.base import BaseCommand
+
 from masjid_data.models import Masjid
-from bs4 import BeautifulSoup
-from urllib2 import urlopen
+from masjid_data.utils import make_soup
 
-BASE_URL = "http://masjid.jp"
-
-def make_soup(url):
-    html = urlopen(url).read()
-    return BeautifulSoup(html, 'lxml')
 
 def get_rows(section_url):
     soup = make_soup(section_url)
     div_center = soup.find("center")
     table = div_center.find("table")
     rows = table.findAll('tr')
-    # cols = rows.findAll('td')
     return rows
 
 def get_columns(row):
