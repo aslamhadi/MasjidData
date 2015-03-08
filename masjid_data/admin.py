@@ -3,7 +3,7 @@ import xlwt
 from django.contrib import admin
 from django.http import HttpResponse
 
-from masjid_data.models import Masjid
+from masjid_data.models import Masjid, Hotel
 
 
 def download_csv(modeladmin, request, queryset):
@@ -51,7 +51,13 @@ download_csv.short_description = "Download as Excel"
 
 
 class MasjidAdmin(admin.ModelAdmin):
-    list_display = ('name', 'area', 'address', 'remarks')
+    list_display = ('name', 'area', 'address', 'remarks', 'source')
     actions = [download_csv]
 
+
+class HotelAdmin(admin.ModelAdmin):
+    list_display = ('country', 'city', 'name', 'address', 'website', 'price', 'lang', 'source', 'room_count', 'wifi', 'other')
+
+
 admin.site.register(Masjid, MasjidAdmin)
+admin.site.register(Hotel, HotelAdmin)
