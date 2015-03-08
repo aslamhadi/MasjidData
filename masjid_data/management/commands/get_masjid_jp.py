@@ -19,15 +19,18 @@ class Command(BaseCommand):
     help = 'Scrap data from web'
 
     def handle(self, *args, **options):
-        rows = get_rows("http://masjid.jp/list.html")
+        url = "http://masjid.jp/list.html"
+        rows = get_rows(url)
 
         tds = []
+        self.stdout.write('Now processing...')
         for row in rows:
             data = get_columns(row)
             masjid = Masjid()
             masjid.name = data[0].text
             masjid.area = data[1].text
             masjid.address = data[2].text
+            masjid.source = url
             try:
                 # font = data[3].findAll("font")
                 # masjid.remarks = data[3].text
