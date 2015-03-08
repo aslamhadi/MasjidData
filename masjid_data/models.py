@@ -21,6 +21,8 @@ class Hotel(models.Model):
     other = models.CharField(max_length=255, default="")
     lang = models.CharField(max_length=255, default="")
     source = models.CharField(max_length=255, default="")
+    room_count = models.CharField(max_length=20, default="0")
+    wifi = models.CharField(max_length=50, default="")
     is_item_prayer = models.BooleanField(default=False)
     is_prayer_room = models.BooleanField(default=False)
 
@@ -45,6 +47,6 @@ class Restaurant(models.Model):
     other = models.CharField(max_length=255, default="")
     lang = models.CharField(max_length=255, default="")
     source = models.CharField(max_length=255, default="")
+    wifi = models.CharField(max_length=50, default="")
     is_item_prayer = models.BooleanField(default=False)
     is_prayer_room = models.BooleanField(default=False)
-    is_free_wifi = models.BooleanField(default=False)
